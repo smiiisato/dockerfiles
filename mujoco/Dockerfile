@@ -86,9 +86,7 @@ RUN apt-get update -q && \
         wget \
         xdg-user-dirs-gtk \
         vim \
-        emacs \
         tmux \
-        git \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # -------------------------------------------------------
@@ -109,6 +107,7 @@ RUN pip3 install numpy==1.23.5
 RUN pip3 install rospkg==1.5.0
 RUN pip3 install pandas==2.0.2
 RUN pip3 install argparse==1.1
+RUN pip3 install imageio
 
 # -------------------------------------------------------
 # Install stable-baselines3
@@ -135,4 +134,3 @@ RUN echo '# Mujoco' >> ~/.bashrc
 RUN echo 'source /mujoco_ws/devel/setup.bash' >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia' >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/leus/.mujoco/mujoco210/bin' >> ~/.bashrc
-
