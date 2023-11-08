@@ -87,6 +87,7 @@ RUN apt-get update -q && \
         xdg-user-dirs-gtk \
         vim \
         tmux \
+        openssh-server \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # -------------------------------------------------------
@@ -134,3 +135,8 @@ RUN echo '# Mujoco' >> ~/.bashrc
 RUN echo 'source /mujoco_ws/devel/setup.bash' >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia' >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/leus/.mujoco/mujoco210/bin' >> ~/.bashrc
+
+# -------------------------------------------------------
+# SSH
+# -------------------------------------------------------
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
